@@ -102,8 +102,6 @@ def get_data(filename, l=True):
                     break
             if in_dis:
                 is_in[j].add(i)
-    
-    mid_time = time.time()
 
     for rule in range(len(rule_list)):
         cur_rule = rule_list[rule]
@@ -125,9 +123,6 @@ def get_data(filename, l=True):
                 rule_list[rule].append(i + m)
 
     dis_time = time.time() - cur_time
-    print(pro_time)
-    print(mid_time - cur_time)
-    print(time.time() - mid_time)
 
     a = [[0]*(m + len(d)) for i in range(r)]
     for i in range(r):
