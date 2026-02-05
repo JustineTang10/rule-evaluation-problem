@@ -8,8 +8,8 @@ num_trials = 20
 times = open('data/mtimes.csv', 'w')
 values = open('data/mvalues.csv', 'w')
 
-num_cases = 400
-r = 200
+num_cases = 100
+r = 100
 data = [[[0] * 5 for j in range(num_cases)],
         [[0] * 6 for j in range(num_cases)]]
 
@@ -39,8 +39,8 @@ times.close()
 times = open('data/rtimes.csv', 'w')
 values = open('data/rvalues.csv', 'w')
 
-num_cases = 400
-m = 200
+num_cases = 100
+m = 100
 data = [[[0] * 5 for j in range(num_cases)],
         [[0] * 6 for j in range(num_cases)]]
 
@@ -70,8 +70,8 @@ times.close()
 times = open('data/ktimes.csv', 'w')
 values = open('data/kvalues.csv', 'w')
 
-r = 200
-m = 400
+r = 100
+m = 100
 num_cases = m
 data = [[[0] * 5 for j in range(num_cases)],
         [[0] * 6 for j in range(num_cases)]]
