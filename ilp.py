@@ -1,33 +1,16 @@
-import os
-os.system('pip install pulp')
-
 from pulp import *
-
-"""input_file = open('rule_eval_input.txt', 'r').read()
-split_file = input_file.split()
-r = int(split_file[0])
-m = int(split_file[1])
-p = [int(split_file[i]) for i in range(2, 2+m)]
-input_file = input_file.splitlines()[2:]
-
-a = [[0]*m for i in range(r)]
-for i in range(r):
-    cur_line = input_file[i].split()
-    for j in cur_line:
-        a[i][int(j) - 1] = 1"""
 
 class ILP:
     def __init__(self, r, m, a):
         self.r = r
         self.m = m
-        self.p = [1] * self.m
         self.a = a
 
         self.f = 0
-        for i in range(self.m):
+        for i in range(self.r):
             cur_f = 0
-            for j in range(self.r):
-                cur_f += self.a[j][i]
+            for j in range(self.m):
+                cur_f += self.a[i][j]
             self.f = max(self.f, cur_f)
     
     def solve(self):
@@ -35,8 +18,8 @@ class ILP:
         x_names = list(range(self.m))
         x = LpVariable.dicts('x', x_names, lowBound=0, upBound=1)
         prob += (
-            lpSum([self.p[i] * x[i] for i in x_names]),
-            'Sum of probabilities of roots',
+            lpSum([x[i] for i in x_names]),
+            'Number of roots',
         )
         for i in range(self.r):
             prob += (
@@ -60,15 +43,10 @@ class ILP:
                 if self.a[i][j] * ans[j] == 1:
                     is_covered = True
             if not is_covered:
-                min_p = 1
                 min_k = -1
                 for j in range(self.m):
-                    if self.a[i][j] and self.p[j] <= min_p:
-                        min_p = self.p[j]
+                    if self.a[i][j]:
                         min_k = j
                 ans[min_k] = 1
         
         return ans
-
-"""solver = ILP(r, m, p, a)
-print(' '.join([str(i) for i in solver.solve()]))"""
