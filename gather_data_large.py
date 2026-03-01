@@ -1,17 +1,18 @@
-import time, re
 from instance import create_instance
 from get_data import get_data
 
-num_trials = 20
+num_trials = 1
 
 # Changing the number of keywords
 times = open('data/mtimes.csv', 'w')
 values = open('data/mvalues.csv', 'w')
 
-num_cases = 100
-r = 100
+num_cases = 2000
+r = 1000
 data = [[[0] * 5 for j in range(num_cases)],
-        [[0] * 6 for j in range(num_cases)]]
+        [[0] * 10 for j in range(num_cases)]]
+        # data now includes the time for preprocessing, times for each loop of the disjunction algorithm, and number of disjunctions
+        # see get_data.py for more details
 
 for i in range(num_cases):
     data[0][i][0] = num_trials * (i + 1)
@@ -39,10 +40,10 @@ times.close()
 times = open('data/rtimes.csv', 'w')
 values = open('data/rvalues.csv', 'w')
 
-num_cases = 100
-m = 100
+num_cases = 2000
+m = 1000
 data = [[[0] * 5 for j in range(num_cases)],
-        [[0] * 6 for j in range(num_cases)]]
+        [[0] * 10 for j in range(num_cases)]]
 
 for i in range(num_cases):
     data[0][i][0] = num_trials * (i + 1)
@@ -70,11 +71,11 @@ times.close()
 times = open('data/ktimes.csv', 'w')
 values = open('data/kvalues.csv', 'w')
 
-r = 100
-m = 100
+r = 1000
+m = 2000
 num_cases = m
 data = [[[0] * 5 for j in range(num_cases)],
-        [[0] * 6 for j in range(num_cases)]]
+        [[0] * 10 for j in range(num_cases)]]
 
 for i in range(num_cases):
     data[0][i][0] = num_trials * (i + 1)
