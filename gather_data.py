@@ -17,7 +17,7 @@ for trial in range(num_trials):
         create_instance(f'testcases/test{case:02}.txt',
                         r,
                         case + 1,
-                        [1 for i in range(case + 1)])
+                        [1 for i in range(case + 1)]) # probabilities; now unused
 
     for case in range(num_cases):
         cur_data = get_data(f'testcases/test{case:02}.txt')
