@@ -18,13 +18,9 @@ def create_instance(filename, n, m, probs, max_clauses=None, max_keywords=None):
     """
     Create an instance file with the following format:
     line 1: n m
-    line 2: p_1 p_2 ... p_m
+    line 2: p_1 p_2 ... p_m (now an unused portion of the test cases)
     next n lines: rules, each containing x key words sampled from [1, m]
     """
-
-    # Sanity check
-    if len(probs) != m:
-        raise ValueError("Length of probs must equal m.")
 
     if max_keywords is None or max_keywords > m:
         max_keywords = m
@@ -59,10 +55,3 @@ def create_instance(filename, n, m, probs, max_clauses=None, max_keywords=None):
             
             # Write the rule
             f.write(" ".join(cur_rule) + "\n")
-
-# Example usage
-if __name__ == "__main__":
-    n = 5     # number of rules
-    m = 6     # number of keywords
-    probs = [0.1, 0.2, 0.05, 0.15, 0.25, 0.25]
-    create_instance("instance_1.tex", n, m, probs)
