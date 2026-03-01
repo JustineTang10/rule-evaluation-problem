@@ -1,8 +1,7 @@
-import time, re
 from instance import create_instance
 from get_data import get_data
 
-num_trials = 40
+num_trials = 20
 
 # Changing the number of keywords
 times = open('data/mtimes.csv', 'w')
@@ -11,7 +10,7 @@ values = open('data/mvalues.csv', 'w')
 num_cases = 10
 r = 10
 data = [[[0] * 6 for j in range(num_cases)],
-        [[0] * 7 for j in range(num_cases)]]
+        [[0] * 7 for j in range(num_cases)]] # 7th column records time for disjunction algorithm
 
 for trial in range(num_trials):
     for case in range(num_cases):
@@ -31,7 +30,7 @@ times.write('\n'.join([','.join(map(lambda x: str(x / num_trials), i)) for i in 
 values.close()
 times.close()
 
-"""# Changing the number of rules
+# Changing the number of rules
 times = open('data/rtimes.csv', 'w')
 values = open('data/rvalues.csv', 'w')
 
@@ -56,9 +55,9 @@ for trial in range(num_trials):
 values.write('\n'.join([','.join(map(lambda x: str(x / num_trials), i)) for i in data[0]]))
 times.write('\n'.join([','.join(map(lambda x: str(x / num_trials), i)) for i in data[1]]))
 values.close()
-times.close()"""
+times.close()
 
-"""# Changing the maximum number of keywords in a rule
+# Changing the maximum number of keywords in a rule
 times = open('data/ktimes.csv', 'w')
 values = open('data/kvalues.csv', 'w')
 
@@ -85,4 +84,4 @@ for trial in range(num_trials):
 values.write('\n'.join([','.join(map(lambda x: str(x / num_trials), i)) for i in data[0]]))
 times.write('\n'.join([','.join(map(lambda x: str(x / num_trials), i)) for i in data[1]]))
 values.close()
-times.close()"""
+times.close()
